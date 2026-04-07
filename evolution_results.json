@@ -1,0 +1,17 @@
+[
+  {
+    "label": "gen1 d=4",
+    "depth": 4,
+    "val_bpb": 1.166813
+  },
+  {
+    "label": "gen2 d=6",
+    "depth": 6,
+    "val_bpb": 1.197264
+  },
+  {
+    "label": "gen3 d=8",
+    "depth": 8,
+    "val_bpb": 1.19616
+  }
+]
