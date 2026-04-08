@@ -1,0 +1,21 @@
+# results.tsv lives in /home/logs at runtime and is intentionally not
+# committed -- it is per-run state, not source.
+results.tsv
+run.log
+candidate_submission.csv
+
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Working dirs that the loop creates inside containers
+/code/
+/logs/
+/submission/
+
+*.egg-info/
+build/
+dist/

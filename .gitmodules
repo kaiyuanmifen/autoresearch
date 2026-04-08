@@ -1,0 +1,6 @@
+[submodule "autoresearch"]
+	path = autoresearch
+	url = https://github.com/kaiyuanmifen/autoresearch.git
+[submodule "mle-bench"]
+	path = mle-bench
+	url = https://github.com/openai/mle-bench.git
