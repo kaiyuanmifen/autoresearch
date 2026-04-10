@@ -1,0 +1,31 @@
+# AI Scientist MLE-Bench Requirements
+
+# LLM APIs
+openai>=1.0.0
+anthropic>=0.20.0
+backoff>=2.2.1
+
+# Code editing agent
+aider-chat>=0.40.0
+
+# Data handling
+pandas>=2.0.0
+numpy>=1.24.0
+
+# ML frameworks (for solution execution)
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+lightgbm>=4.0.0
+
+# Optional ML frameworks
+# torch>=2.0.0
+# tensorflow>=2.13.0
+# catboost>=1.2.0
+
+# Optional AutoML
+# auto-sklearn>=0.15.0
+# flaml>=2.0.0
+# autogluon>=1.0.0
+
+# Utilities
+tqdm>=4.65.0

@@ -1,0 +1,146 @@
+[
+    {
+        "Name": "gradient_boosting_baseline",
+        "Title": "Gradient Boosting Baseline with Feature Engineering",
+        "Strategy": "Use LightGBM/XGBoost gradient boosting with basic feature engineering as a strong baseline. Gradient boosting consistently performs well on tabular data competitions.",
+        "Model": "LightGBM or XGBoost",
+        "Preprocessing": [
+            "Handle missing values with median/mode imputation",
+            "Encode categorical variables with label encoding",
+            "Remove constant and duplicate columns",
+            "Basic outlier clipping"
+        ],
+        "Feature_Engineering": [
+            "Target encoding for high-cardinality categoricals",
+            "Interaction features between top correlated features",
+            "Aggregation statistics (mean, std, min, max) for grouped features",
+            "Date/time feature extraction if applicable"
+        ],
+        "Hyperparameters": {
+            "learning_rate": 0.05,
+            "num_leaves": 31,
+            "max_depth": -1,
+            "n_estimators": 1000,
+            "early_stopping_rounds": 50,
+            "subsample": 0.8,
+            "colsample_bytree": 0.8
+        },
+        "Implementation_Plan": [
+            "Load and explore data",
+            "Basic preprocessing and cleaning",
+            "Feature engineering",
+            "Split data for validation",
+            "Train LightGBM with early stopping",
+            "Generate predictions on test data",
+            "Create submission CSV"
+        ],
+        "Expected_Strengths": "Strong baseline for tabular data, handles mixed types well, fast training",
+        "Expected_Weaknesses": "May not capture complex non-linear relationships, limited for image/text data",
+        "Complexity": 2,
+        "Expected_Score": "Top 50%",
+        "Time_Estimate_Hours": 1
+    },
+    {
+        "Name": "neural_network_approach",
+        "Title": "Neural Network with Embedding Layers",
+        "Strategy": "Use a neural network with learned embeddings for categorical features. This can capture complex non-linear relationships that tree-based models miss.",
+        "Model": "PyTorch Neural Network",
+        "Preprocessing": [
+            "Standardize numerical features",
+            "Handle missing values",
+            "Encode categoricals for embedding layers",
+            "Feature normalization"
+        ],
+        "Feature_Engineering": [
+            "Learned embeddings for categorical features",
+            "Batch normalization between layers",
+            "Numerical feature interactions via hidden layers"
+        ],
+        "Hyperparameters": {
+            "learning_rate": 0.001,
+            "batch_size": 256,
+            "epochs": 100,
+            "hidden_sizes": [256, 128, 64],
+            "dropout": 0.3,
+            "weight_decay": 0.0001
+        },
+        "Implementation_Plan": [
+            "Data loading and preprocessing",
+            "Design network architecture",
+            "Implement training loop with early stopping",
+            "Cross-validation for hyperparameter selection",
+            "Generate test predictions",
+            "Create submission CSV"
+        ],
+        "Expected_Strengths": "Can capture complex patterns, flexible architecture",
+        "Expected_Weaknesses": "Requires more data to train well, slower than tree-based models",
+        "Complexity": 3,
+        "Expected_Score": "Top 30-40%",
+        "Time_Estimate_Hours": 2
+    },
+    {
+        "Name": "ensemble_approach",
+        "Title": "Weighted Ensemble of Diverse Models",
+        "Strategy": "Combine predictions from multiple diverse models (LightGBM, XGBoost, CatBoost, Neural Net) using weighted averaging or stacking to improve robustness and score.",
+        "Model": "Ensemble (LightGBM + XGBoost + CatBoost + optional NN)",
+        "Preprocessing": [
+            "Model-specific preprocessing pipelines",
+            "Handle missing values appropriately for each model",
+            "Feature type detection and encoding"
+        ],
+        "Feature_Engineering": [
+            "Shared feature set across models",
+            "Model-specific feature transformations",
+            "Out-of-fold predictions for stacking"
+        ],
+        "Hyperparameters": {
+            "ensemble_method": "weighted_average",
+            "cv_folds": 5,
+            "per_model_tuning": true
+        },
+        "Implementation_Plan": [
+            "Implement base models individually",
+            "Generate out-of-fold predictions for each model",
+            "Optimize ensemble weights using validation score",
+            "Generate final stacked predictions",
+            "Create submission CSV"
+        ],
+        "Expected_Strengths": "Reduces variance, combines diverse model strengths, robust",
+        "Expected_Weaknesses": "More complex, longer training time, harder to debug",
+        "Complexity": 4,
+        "Expected_Score": "Top 20-30%",
+        "Time_Estimate_Hours": 3
+    },
+    {
+        "Name": "automl_baseline",
+        "Title": "AutoML Baseline with Auto-sklearn or FLAML",
+        "Strategy": "Use an AutoML framework to automatically search for the best model and hyperparameters. Good for quick baselines and when the problem type is standard.",
+        "Model": "AutoML (auto-sklearn, FLAML, or AutoGluon)",
+        "Preprocessing": [
+            "Minimal manual preprocessing",
+            "Let AutoML handle feature transformations",
+            "Basic data cleaning only"
+        ],
+        "Feature_Engineering": [
+            "Automated feature selection",
+            "Automated feature transformation"
+        ],
+        "Hyperparameters": {
+            "time_budget": 3600,
+            "task": "auto",
+            "metric": "competition_metric"
+        },
+        "Implementation_Plan": [
+            "Load data and identify target",
+            "Configure AutoML with competition metric",
+            "Run AutoML search",
+            "Generate predictions with best model",
+            "Create submission CSV"
+        ],
+        "Expected_Strengths": "Quick to implement, explores many model types automatically",
+        "Expected_Weaknesses": "Less control over model, may not find domain-specific features",
+        "Complexity": 1,
+        "Expected_Score": "Top 40-50%",
+        "Time_Estimate_Hours": 0.5
+    }
+]
